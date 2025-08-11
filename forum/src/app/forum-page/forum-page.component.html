@@ -1,24 +1,42 @@
-<section class="forum-container">
-  <h1>Форумът на Майстори БГ</h1>
-  
-  <div class="new-post">
-    <textarea placeholder="Напиши нов въпрос или тема..." rows="3"></textarea>
-    <button class="btn-primary">Публикувай</button>
+<section class="forum-wrapper">
+  <h1>Форум на Майстори БГ</h1>
+
+  <!-- Search -->
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Търси по заглавие..." class="search-bar" />
+
+  <!-- Списък с постове -->
+  <div *ngIf="!selectedPost">
+    <div class="post-preview" *ngFor="let post of filteredPosts" (click)="viewPost(post)">
+      <h3>{{ post.title }}</h3>
+      <p class="meta">От {{ post.author }} | {{ post.date }}</p>
+      <p>{{ post.content | slice:0:100 }}...</p>
+    </div>
   </div>
 
-  <div class="posts-list">
-    <article class="post">
-      <h2>Как да сменя плочките в банята?</h2>
-      <p>От: Иван | 12.08.2025</p>
-      <p>Имам нужда от съвет за смяната на плочките. Какви инструменти са необходими?</p>
-    </article>
+  <!-- Избран пост -->
+  <div *ngIf="selectedPost" class="post-detail">
+    <button class="back-btn" (click)="backToList()">← Назад</button>
 
-    <article class="post">
-      <h2>Препоръчани майстори за ремонт на покрив</h2>
-      <p>От: Мария | 10.08.2025</p>
-      <p>Търся надеждни майстори за ремонт на покрив в София. Ако някой има препоръки.</p>
-    </article>
+    <!-- Преглед -->
+    <div *ngIf="!isEditing">
+      <h2>{{ selectedPost.title }}</h2>
+      <p class="meta">От {{ selectedPost.author }} | {{ selectedPost.date }}</p>
+      <p>{{ selectedPost.content }}</p>
 
-    <!-- Добавяй още постове тук -->
+      <button (click)="startEdit()" class="btn edit">Редактирай</button>
+      <button (click)="deletePost()" class="btn delete">Изтрий</button>
+    </div>
+
+    <!-- Редакция -->
+    <div *ngIf="isEditing" class="edit-form">
+      <label>Заглавие</label>
+      <input [(ngModel)]="selectedPost.title" />
+
+      <label>Съдържание</label>
+      <textarea [(ngModel)]="selectedPost.content" rows="5"></textarea>
+
+      <button (click)="saveEdit()" class="btn save">Запази</button>
+      <button (click)="cancelEdit()" class="btn cancel">Отказ</button>
+    </div>
   </div>
 </section>

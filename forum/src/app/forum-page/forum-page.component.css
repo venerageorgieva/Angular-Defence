@@ -1,102 +1,78 @@
-.forum-container {
-  max-width: 900px;
+.forum-wrapper {
+  max-width: 800px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
   font-family: Arial, sans-serif;
 }
 
-.forum-container h1 {
+h1 {
   text-align: center;
   color: #2e7d32;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Нова публикация */
-.new-post {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.new-post textarea {
-  resize: vertical;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 2px solid #4caf50;
+.search-bar {
+  width: 100%;
+  padding: 0.6rem;
   border-radius: 6px;
-  min-height: 80px;
-  font-family: inherit;
+  border: 2px solid #c8e6c9;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
-.new-post textarea:focus {
-  outline: none;
-  border-color: #087f23;
-  box-shadow: 0 0 5px #087f23;
-}
-
-.btn-primary {
-  align-self: flex-end;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  border-radius: 5px;
+.post-preview {
+  background: #f1f8e9;
+  padding: 1rem;
+  border-left: 4px solid #66bb6a;
+  margin-bottom: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s ease;
 }
 
-.btn-primary:hover {
-  background-color: #087f23;
+.post-preview:hover {
+  background: #e8f5e9;
 }
 
-/* Списък с постове */
-.posts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.post {
-  background-color: #e8f5e9;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  color: #2e7d32;
-}
-
-.post h2 {
-  margin-top: 0;
+.meta {
+  font-size: 0.85rem;
+  color: #555;
   margin-bottom: 0.5rem;
 }
 
-.post p:first-of-type {
-  font-size: 0.9rem;
-  color: #555;
+.post-detail {
+  background: #e8f5e9;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.btn.edit { background: #4caf50; color: white; }
+.btn.delete { background: #e53935; color: white; }
+.btn.save { background: #2e7d32; color: white; }
+.btn.cancel { background: gray; color: white; }
+.back-btn {
   margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.post p {
-  white-space: nowrap;      
-  overflow: hidden;         
-  text-overflow: ellipsis;  
-}
-
-
-/* Responsive */
-@media (max-width: 600px) {
-  .forum-container {
-    padding: 0 0.5rem;
-  }
-
-  .new-post textarea {
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    width: 100%;
-    align-self: stretch;
-  }
+  background: none;
+  border: none;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: bold;
 }

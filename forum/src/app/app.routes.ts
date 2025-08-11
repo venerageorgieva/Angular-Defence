@@ -6,8 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'forum', component: ForumPageComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'forum-page', component: ForumPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];

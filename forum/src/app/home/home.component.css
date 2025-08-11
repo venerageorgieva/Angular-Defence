@@ -41,10 +41,11 @@
 }
 
 .hero-image img {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   height: auto;
   border-radius: 8px;
+  background-color: #087f23;
 }
 
 /* Секцията с функции */
@@ -146,6 +147,9 @@
   }
 }
 
+
+
+
 @media (max-width: 400px) {
   .hero-content h1 {
     font-size: 2rem;
@@ -162,4 +166,48 @@
   .card h3 {
     font-size: 1.25rem;
   }
+}
+
+
+.hero-image {
+  max-width: 100%;
+  flex-shrink: 1;          
+  display: flex;           
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;            
+  max-width: 400px;        
+  height: auto;            
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  max-height: 300px;      
+}
+
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+  
+  .hero-image {
+    max-width: 80vw;       
+    margin-bottom: 2rem;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    max-height: none;    
+}
+}
+
+.hero-image img {
+  max-width:800px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #087f23;
 }

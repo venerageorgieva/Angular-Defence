@@ -1,0 +1,75 @@
+.footer {
+  background-color: #1e3d59;
+  color: #e0f2f1;
+  padding: 2rem 2.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.footer-logo span {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #a5d6a7;
+  margin-left: 0.5rem;
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.contact-item .icon {
+  font-size: 1.3rem;
+  color: #81c784;
+  user-select: none;
+}
+
+.contact-item a {
+  color: #e0f2f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #a5d6a7;
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-contacts {
+    gap: 1rem;
+    justify-content: center;
+  }
+}

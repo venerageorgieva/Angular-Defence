@@ -1,0 +1,68 @@
+/* Aside секция */
+aside {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Заглавие */
+.aside .title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 0.5rem;
+}
+
+/* Контейнер за постове */
+.aside-theme {
+  background: #f9fafc;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.aside-theme:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Линк */
+.aside-theme a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Име на тема */
+.aside-theme h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b6cb0;
+  margin-bottom: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.aside-theme:hover h3 {
+  color: #0077ff;
+}
+
+/* Потребителско име */
+.aside-theme p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin: 0.2rem 0;
+}
+
+/* Време (elapsedTime pipe) */
+.aside-theme span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #718096;
+}

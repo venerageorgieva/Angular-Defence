@@ -1,0 +1,78 @@
+/* Основен контейнер */
+.theme-title {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Theme card */
+.theme-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.theme-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme header */
+.theme-name h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.theme-name a.normal {
+  text-decoration: none;
+  color: inherit;
+}
+
+.theme-name a.normal:hover {
+  color: #007bff;
+}
+
+/* Columns */
+.columns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.nick-name span {
+  font-weight: bold;
+}
+
+/* Subscribers */
+.subscribers span {
+  font-weight: bold;
+}
+
+/* Search bar */
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

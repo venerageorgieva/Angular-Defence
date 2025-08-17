@@ -1,70 +1,71 @@
-<!-- homepage -->
-<div class="container">
-  <div class="new-theme-border">
-    <div class="header-background">
-      <span>New Theme</span>
-    </div>
-    <form #form="ngForm" (ngSubmit)="addTheme(form)">
-      <div class="new-theme-title">
-        <label for="themeName">Title <span class="red">*</span></label>
-        <input
-          type="text"
-          name="themeName"
-          id="themeName"
-          ngModel
-          #inputThemeName="ngModel"
-          required
-          minlength="5"
-        />
-
-        @if(inputThemeName?.touched){
-        <div>
-          @if(inputThemeName?.errors?.['required']){
-          <p class="error">Theme name is required.</p>
-          }
-          <!---->
-          @if(inputThemeName?.errors?.['minlength']){
-          <p class="error">Theme name must be at least 5 characters long.</p>
-          }
-        </div>
-        }
-      </div>
-      <div class="new-theme-content">
-        <label for="postText">Post <span class="red">*</span></label>
-        <textarea
-          type="text"
-          name="postText"
-          id="postText"
-          rows="8"
-          class="height"
-          ngModel
-          #inputPostText="ngModel"
-          required
-          minlength="10"
-        ></textarea>
-
-        @if(inputPostText?.touched){
-        <div>
-          @if(inputPostText?.errors?.['required']){
-          <p class="error">The field with your post is required.</p>
-          }
-          <!---->
-          @if(inputPostText?.errors?.['minlength']){
-          <p class="error">Post must be at least 10 characters long.</p>
-          }
-        </div>
-        }
-      </div>
-      <div class="new-theme-buttons">
-        <button class="cancel">Cancel</button>
-        <button
-          class="public"
-          [disabled]="form.invalid"
-          [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"
-        >
-          Post
-        </button>
-      </div>
-    </form>
+<div class="forum-container">
+  <div class="forum-header">
+    <h2>🛠️ Новa тема във форума</h2>
   </div>
+
+  <form #form="ngForm" (ngSubmit)="addTheme(form)" class="forum-form">
+    <!-- Заглавие -->
+    <div class="form-group">
+      <label for="themeName">Заглавие на темата <span class="required">*</span></label>
+      <input
+        type="text"
+        id="themeName"
+        name="themeName"
+        ngModel
+        #inputThemeName="ngModel"
+        required
+        minlength="5"
+        placeholder="Въведете заглавие (мин. 5 символа)"
+      />
+
+      @if(inputThemeName?.touched){
+        <div class="error-box">
+          @if(inputThemeName?.errors?.['required']){
+            <p class="error">Моля, въведете заглавие.</p>
+          }
+          @if(inputThemeName?.errors?.['minlength']){
+            <p class="error">Заглавието трябва да е поне 5 символа.</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Съдържание -->
+    <div class="form-group">
+      <label for="postText">Съобщение <span class="required">*</span></label>
+      <textarea
+        id="postText"
+        name="postText"
+        rows="10"
+        ngModel
+        #inputPostText="ngModel"
+        required
+        minlength="10"
+        placeholder="Напишете тук вашето мнение или въпрос..."
+      ></textarea>
+
+      @if(inputPostText?.touched){
+        <div class="error-box">
+          @if(inputPostText?.errors?.['required']){
+            <p class="error">Моля, въведете съдържание.</p>
+          }
+          @if(inputPostText?.errors?.['minlength']){
+            <p class="error">Съобщението трябва да е поне 10 символа.</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Бутони -->
+    <div class="form-actions">
+      <button type="button" class="btn cancel" routerLink="/themes">❌ Отказ</button>
+      <button
+        type="submit"
+        class="btn post"
+        [disabled]="form.invalid"
+      >
+        ✅ Публикувай
+      </button>
+    </div>
+  </form>
 </div>

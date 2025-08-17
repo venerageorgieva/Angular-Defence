@@ -1,158 +1,120 @@
-<!-- homepage -->
-<div class="container">
-  <form class="register" [formGroup]="form" (ngSubmit)="register()">
+<div class="register-container">
+  <form class="register-form" [formGroup]="form" (ngSubmit)="register()">
     <fieldset>
-      <h2>Registration Form</h2>
+      <legend>Регистрация</legend>
 
-      <!-- username -->
-      <p class="field field-icon">
-        <label for="username">
-          <span><i class="fas fa-user"></i></span>
-        </label>
+      <!-- Потребителско име -->
+      <div class="form-group">
+        <label for="username">Потребителско име</label>
         <input
-          [class]="
-            isFieldTextMissing('username') || isNotMinLength
-              ? 'input-error'
-              : ''
-          "
           type="text"
-          name="username"
           id="username"
-          placeholder="Johny"
           formControlName="username"
+          placeholder="Иван"
+          [class.input-error]="isFieldTextMissing('username') || isNotMinLength"
         />
-      </p>
-
-      @if(form.get('username')?.touched){
-      <div>
-        @if(form.get('username')?.errors?.['required']){
-        <p class="error">Username is required!</p>
-        }
-        <!--  -->
-        @if(form.get('username')?.errors?.['minlength']){
-        <p class="error">Username must be at least 5 characters!</p>
-        }
+        <div class="error-box">
+          <p class="error" *ngIf="form.get('username')?.errors?.['required'] && form.get('username')?.touched">
+            Полето е задължително!
+          </p>
+          <p class="error" *ngIf="form.get('username')?.errors?.['minlength'] && form.get('username')?.touched">
+            Минимална дължина 5 символа!
+          </p>
+        </div>
       </div>
-      }
 
-      <!-- email -->
-      <p class="field field-icon">
-        <label for="email"
-          ><span><i class="fas fa-envelope"></i></span
-        ></label>
+      <!-- Имейл -->
+      <div class="form-group">
+        <label for="email">Имейл</label>
         <input
-          [class]="
-            isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''
-          "
           type="email"
-          name="email"
           id="email"
-          placeholder="john.doe@gmail.com"
           formControlName="email"
+          placeholder="ivan.ivanov@gmail.com"
+          [class.input-error]="isFieldTextMissing('email') || isEmailNotValid"
         />
-      </p>
-
-      @if(form.get('email')?.touched){
-      <div>
-        @if(form.get('email')?.errors?.['required']){
-        <p class="error">Email is required!</p>
-        }
-        <!--  -->
-        @if(form.get('email')?.errors?.['emailValidator']){
-        <p class="error">Email is not valid!</p>
-        }
+        <div class="error-box">
+          <p class="error" *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched">
+            Полето е задължително!
+          </p>
+          <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator'] && form.get('email')?.touched">
+            Невалиден имейл!
+          </p>
+        </div>
       </div>
-      }
-      <!-- telephone -->
-      <p class="field field-icon">
-        <label for="tel"
-          ><span><i class="fas fa-phone"></i></span
-        ></label>
-        <select name="select-tel" id="select-tel" class="tel">
-          <option value="00359">+359</option>
-        </select>
-        <input
-          type="text"
-          name="tel"
-          id="tel"
-          placeholder="885 888 888"
-          formControlName="tel"
-        />
-      </p>
 
+      <!-- Телефон -->
+      <div class="form-group">
+        <label for="tel">Телефон</label>
+        <div style="display: flex; gap: 5px;">
+          <select id="select-tel" class="tel">
+            <option value="00359">+359</option>
+          </select>
+          <input
+            type="text"
+            id="tel"
+            formControlName="tel"
+            placeholder="885 888 888"
+          />
+        </div>
+      </div>
+
+      <!-- Парола -->
       <div formGroupName="passGroup">
-        <!-- password -->
-        <p class="field field-icon">
-          <label for="password"
-            ><span><i class="fas fa-lock"></i></span
-          ></label>
+        <div class="form-group">
+          <label for="password">Парола</label>
           <input
-            [class]="(
-              (passGroup?.get('password')?.touched &&
-               passGroup?.get('password')?.errors?.['required'] ) ||
-               (passGroup?.get('password')?.touched && 
-               passGroup?.get('password')?.errors?.['minlength'])
-            ) ? 'input-error' : ''"
             type="password"
-            name="password"
             id="password"
-            placeholder="******"
             formControlName="password"
-          />
-        </p>
-
-        @if(passGroup?.get('password')?.touched){
-        <div>
-          @if(passGroup?.get('password')?.errors?.['required']){
-          <p class="error">Password is required!</p>
-          }
-          <!--  -->
-          @if(passGroup?.get('password')?.errors?.['minlength']){
-          <p class="error">Password must be at least 5 characters!</p>
-          }
-        </div>
-        }
-
-        <!-- rePassword -->
-        <p class="field field-icon">
-          <label for="rePassword"
-            ><span><i class="fas fa-lock"></i></span
-          ></label>
-          <input
-            [class]="(
-              (passGroup?.get('rePassword')?.touched &&
-              (passGroup?.get('rePassword')?.errors?.['required'] ||
-              passGroup?.errors?.['matchPasswordsValidator'])) 
-            ) ? 'input-error' : ''"
-            type="password"
-            name="rePassword"
-            id="rePassword"
             placeholder="******"
-            formControlName="rePassword"
+            [class.input-error]="
+              (passGroup?.get('password')?.errors?.['required'] && passGroup?.get('password')?.touched) ||
+              (passGroup?.get('password')?.errors?.['minlength'] && passGroup?.get('password')?.touched)
+            "
           />
-        </p>
-
-        @if(passGroup?.get('rePassword')?.touched){
-        <div>
-          @if(passGroup?.errors?.['matchPasswordsValidator'] ||
-          passGroup?.get('rePassword')?.errors?.['required']){
-          <p class="error">Repeat Password does not match password!</p>
-          }
+          <div class="error-box">
+            <p class="error" *ngIf="passGroup?.get('password')?.errors?.['required'] && passGroup?.get('password')?.touched">
+              Полето е задължително!
+            </p>
+            <p class="error" *ngIf="passGroup?.get('password')?.errors?.['minlength'] && passGroup?.get('password')?.touched">
+              Минимална дължина 5 символа!
+            </p>
+          </div>
         </div>
-        }
+
+        <!-- Потвърждение на парола -->
+        <div class="form-group">
+          <label for="rePassword">Повторете паролата</label>
+          <input
+            type="password"
+            id="rePassword"
+            formControlName="rePassword"
+            placeholder="******"
+            [class.input-error]="
+              (passGroup?.get('rePassword')?.errors?.['required'] && passGroup?.get('rePassword')?.touched) ||
+              (passGroup?.errors?.['matchPasswordsValidator'] && passGroup?.get('rePassword')?.touched)
+            "
+          />
+          <div class="error-box">
+            <p class="error" *ngIf="(passGroup?.errors?.['matchPasswordsValidator'] || passGroup?.get('rePassword')?.errors?.['required']) && passGroup?.get('rePassword')?.touched">
+              Паролите не съвпадат!
+            </p>
+          </div>
+        </div>
       </div>
 
-      <button
-        [disabled]="form.invalid"
-        [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"
-      >
-        Create Account
-      </button>
+      <!-- Бутон -->
+      <div class="actions">
+        <button class="btn register-btn" [disabled]="form.invalid">
+          Създай акаунт
+        </button>
+      </div>
 
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/login">Log In</a>
-      </p>
+      <!-- Вход -->
+      <div class="login-link">
+        Вече имате акаунт? <a routerLink="/login">Вход</a>
+      </div>
     </fieldset>
   </form>
 </div>

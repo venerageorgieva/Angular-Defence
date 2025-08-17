@@ -1,104 +1,77 @@
-<!-- homepage -->
-<div class="container">
-  <div class="profile">
-    <img src="./profile.png" alt="default user" />
-    <h3>User Info:</h3>
-
-    <!-- READONLY MODE -->
-
-    @if(!isEditMode){
-    <ng-container>
-      <div class="flex">
-        <p>Username:</p>
-        <p>{{ profileDetails.username }}</p>
-      </div>
-      <div class="flex">
-        <p>Email:</p>
-        <p>{{ profileDetails.email }}</p>
-      </div>
-      <div class="flex">
-        <p>Phone:</p>
-        <p>{{ profileDetails.tel }}</p>
-      </div>
-      <button class="edit-button" (click)="toggleEditMode()">Edit</button>
-    </ng-container>
-    } @else {
-    <!-- EDIT MODE -->
-    <ng-container>
-      <form [formGroup]="form" (ngSubmit)="handleSaveProfile()">
-        <div class="flex">
-          <p>Username:</p>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            value="Johny"
-            formControlName="username"
-          />
-        </div>
-        @if(form.get('username')?.touched){
-        <div>
-          @if(form.get('username')?.errors?.['required']){
-          <p class="error">Username is required!</p>
-          }
-          <!--  -->
-          @if(form.get('username')?.errors?.['minlength']){
-          <p class="error">Username must be at least 5 characters!</p>
-          }
-        </div>
-        }
-
-        <div class="flex">
-          <p>Email:</p>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value="john.doe@gmail.com"
-            formControlName="email"
-          />
-        </div>
-
-        @if(form.get('email')?.touched){
-        <div>
-          @if(form.get('email')?.errors?.['required']){
-          <p class="error">Email is required!</p>
-          }
-          <!--  -->
-          @if(form.get('email')?.errors?.['emailValidator']){
-          <p class="error">Email is not valid!</p>
-          }
-        </div>
-        }
-
-        <div class="flex">
-          <p>Phone:</p>
-          <div>
-            <select name="select-tel" id="select-tel" class="tel">
-              <option value="00359">+359</option>
-            </select>
-            <input
-              type="text"
-              name="tel"
-              id="tel"
-              value="885 888 888"
-              formControlName="tel"
-            />
-          </div>
-        </div>
-
-        <div class="btn-wrapper">
-          <button class="red-button" (click)="onCancel($event)">Cancel</button>
-          <button
-            class="green-button"
-            [disabled]="form.invalid"
-            [style]="{ backgroundColor: form.invalid ? 'grey' : '#5cb85c' }"
-          >
-            Save
-          </button>
-        </div>
-      </form>
-    </ng-container>
-    }
+<div class="profile-container">
+  <div class="profile-header">
+    <img src="/Project/public/profile-photo.jpg" alt="default user" class="profile-img" />
+    <h2>👤 Потребителски профил</h2>
   </div>
+
+  <!-- READONLY MODE -->
+  @if(!isEditMode){
+    <div class="profile-info">
+      <div class="info-row">
+        <span class="label">Потребител:</span>
+        <span class="value">{{ profileDetails.username }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Имейл:</span>
+        <span class="value">{{ profileDetails.email }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Телефон:</span>
+        <span class="value">{{ profileDetails.tel }}</span>
+      </div>
+      <div class="actions">
+        <button class="btn edit-btn" (click)="toggleEditMode()">✏️ Редактирай</button>
+      </div>
+    </div>
+  } @else {
+  <!-- EDIT MODE -->
+    <form [formGroup]="form" (ngSubmit)="handleSaveProfile()" class="profile-form">
+      <div class="form-group">
+        <label for="username">Потребител:</label>
+        <input type="text" id="username" formControlName="username" placeholder="Въведете потребителско име"/>
+        @if(form.get('username')?.touched){
+          <div class="error-box">
+            @if(form.get('username')?.errors?.['required']){
+              <p class="error">Моля, въведете потребителско име!</p>
+            }
+            @if(form.get('username')?.errors?.['minlength']){
+              <p class="error">Потребителското име трябва да е поне 5 символа!</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email">Имейл:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Въведете имейл"/>
+        @if(form.get('email')?.touched){
+          <div class="error-box">
+            @if(form.get('email')?.errors?.['required']){
+              <p class="error">Имейлът е задължителен!</p>
+            }
+            @if(form.get('email')?.errors?.['emailValidator']){
+              <p class="error">Невалиден имейл!</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="tel">Телефон:</label>
+        <div class="tel-input">
+          <select id="select-tel" class="tel-select">
+            <option value="00359">+359</option>
+          </select>
+          <input type="text" id="tel" formControlName="tel" placeholder="Въведете телефон"/>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn cancel-btn" (click)="onCancel($event)">❌ Отказ</button>
+        <button type="submit" class="btn save-btn" [disabled]="form.invalid">
+          💾 Запази
+        </button>
+      </div>
+    </form>
+  }
 </div>

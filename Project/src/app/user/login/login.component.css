@@ -1,123 +1,111 @@
-/* login register forms */
+/* Контейнер */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
 
-form.login,
-form.register {
-  width: 40%;
-  margin: 2em auto 0;
+/* Формата */
+.login-form fieldset {
+  border: none;
+  padding: 0;
+}
+
+.login-form legend {
+  font-size: 1.6rem;
+  font-weight: bold;
   text-align: center;
-  background-color: #e4e3e3;
-  border-radius: 0.5em;
-  padding: 1em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.login fieldset,
-.register fieldset {
-  border-radius: 0.5em;
-  padding: 1em;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.login h2,
-.register h2 {
-  padding-top: 0;
-  border-bottom: none;
+  margin-bottom: 20px;
   color: #234465;
-  font-size: 1.8em;
 }
 
-.login p,
-.register p {
-  padding-bottom: 0;
-  padding-top: 1.5rem;
+/* Полета */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
   color: #333;
 }
 
-.login input,
-.register input {
-  flex: 0 1 100%;
-  border: 1px solid #999;
-  padding: 0.4em;
-  border-left: 0.4em solid green;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-  font-size: 1em;
+.form-group input {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-.login select,
-.register select {
-  border-color: #333;
-  padding: 0.3em;
-  border-radius: 0.3em;
-}
-
-.login button,
-.register button {
-  background-color: #234465;
-  color: white;
-  border: none;
-  border-radius: 0.5em;
-  padding: 0.7em 1.5em;
-  margin-top: 1.5rem;
-  width: 60%;
+.form-group input:focus {
+  border-color: #234465;
   outline: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.login button:hover,
-.register button:hover {
-  transform: scale(1.05);
-}
-
-.login i,
-.register i {
-  border: 1px solid #999;
-  border-right: none;
-  padding: 0.55em;
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
-  background-color: #e9ecef;
-}
-
-.login a,
-.register a {
-  color: #234465;
-  text-decoration: none;
-}
-
-.login a:hover,
-.register a:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.register .tel {
-  padding-right: 0.8em;
-}
-
-.login .field,
-.register .field {
-  display: flex;
-  padding-bottom: 0.5em;
-  align-items: center;
-}
-
-.login .field input,
-.register .field input {
-  margin-left: 0.5em;
-}
-
-p.error {
-  text-align: left;
-  border-radius: 0.5em;
-  color: red !important;
-  padding-top: 0;
-  font-weight: bold;
+  box-shadow: 0 0 4px rgba(35, 68, 101, 0.3);
 }
 
 .input-error {
-  border-left-color: red !important;
-  border-color: red !important;
+  border-color: #b40000 !important;
+}
+
+/* Грешки */
+.error-box {
+  margin-top: 4px;
+}
+
+.error {
+  color: #b40000;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Бутони */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.btn.login-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #234465;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn.login-btn:hover:not(:disabled) {
+  background: #1c3451;
+}
+
+.btn.login-btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+/* Линк към регистрация */
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.register-link a {
+  color: #234465;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
 }

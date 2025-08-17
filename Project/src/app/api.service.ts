@@ -47,19 +47,37 @@ export class ApiService {
     );
   }
 
-  // delete -> http.delete theme ID
-  deletePost(themeId: string, postId: string) {
-    return this.http.delete(`/api/themes/${themeId}/posts/${postId}`);
+//   // delete -> http.delete theme ID
+//   deletePost(themeId: string, postId: string) {
+//     return this.http.delete(`/api/themes/${themeId}/posts/${postId}`);
+//   }
+
+// addComment(themeId: string, text: string) {
+//   return this.http.post<Post>(`/themes/${themeId}`, { text });
+// }
+
+// likePost(postId: string): Observable<any> {
+//   return this.http.post(`/posts/${postId}`, {}); //
+// }
+
+
+// Харесване на пост
+  likePost(postId: string): Observable<any> {
+    return this.http.post(`/api/themes/posts/${postId}/like`, {});
   }
 
-addComment(themeId: string, text: string) {
-  return this.http.post<Post>(`/themes/${themeId}`, { text });
-}
+  // Добавяне на коментар
+  addComment(postId: string, text: string): Observable<Comment> {
+    return this.http.post<Comment>(`/api/themes/posts/${postId}/comments`, { text });
+  }
 
-likePost(postId: string): Observable<any> {
-  return this.http.post(`/likes/${postId}`, {}); //
-}
+  // Изтриване на пост
+  deletePost(postId: string): Observable<any> {
+    return this.http.delete(`/api/themes/posts/${postId}`);
+  }
 
-
-
+  // Изтриване на коментар
+  deleteComment(postId: string, commentId: string): Observable<any> {
+    return this.http.delete(`/api/themes/posts/${postId}/comments/${commentId}`);
+  }
 }

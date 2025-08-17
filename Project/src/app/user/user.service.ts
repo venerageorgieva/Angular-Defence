@@ -12,18 +12,24 @@ export class UserService implements OnDestroy {
 
   USER_KEY = '[user]';
   user: UserForAuth | null = null;
-  userSubscription: Subscription | null = null;
-
-  get isLogged(): boolean {
-    return !!this.user;
-  }
+  userSubscription: Subscription;
 
   constructor(private http: HttpClient) {
+    // Вземи потребителя от localStorage при стартиране
+    const savedUser = localStorage.getItem(this.USER_KEY);
+    if (savedUser) {
+      this.user$$.next(JSON.parse(savedUser));
+    }
+
+    // Абониране за промени
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
+  get isLogged(): boolean {
+    return !!this.user;
+  }
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>('/api/login', { email, password })

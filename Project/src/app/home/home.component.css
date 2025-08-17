@@ -69,68 +69,6 @@ body {
   font-size: 1.2em;
 }
 
-/* Стилове за Posts List */
-app-posts-list {
-  margin-top: 40px;
-}
-
-.posts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.post-item {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  border-left: 5px solid #d4af37; /* Златен акцент */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.post-item h3 {
-  font-size: 1.6em;
-  color: #2c3e50;
-}
-
-.post-item p {
-  font-size: 1em;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.post-item .post-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.post-footer .like-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.post-footer .like-btn:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-}
-
-.post-footer .like-btn:active {
-  background-color: #388e3c;
-  transform: scale(0.98);
-}
-
-.post-footer .post-info {
-  font-size: 0.9em;
-  color: #777;
-}
-
 /* Отзиви от потребители */
 .reviews-section {
   margin-top: 50px;

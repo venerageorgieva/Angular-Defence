@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { Theme } from '../../types/theme';
 import { UserService } from '../../user/user.service';
+import { Theme } from '../../types/theme';
+import { Post } from '../../types/post';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { User } from '../../types/user';
 import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-current-theme',
   standalone: true,
-  imports: [HomeComponent],
+  imports: [CommonModule,ReactiveFormsModule,HomeComponent,CommonModule],
   templateUrl: './current-theme.component.html',
-  styleUrls: ['./current-theme.component.css'],  // поправено 'styleUrl' на 'styleUrls'
+  styleUrls: ['./current-theme.component.css']
 })
 export class CurrentThemeComponent implements OnInit {
   theme = {} as Theme;
-  userId: string = ''; 
+  userId: string = '';
+
+  commentForm = new FormGroup({
+    text: new FormControl('')
+  });
+  comment: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,39 +31,58 @@ export class CurrentThemeComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  // Проверка дали потребителят е логнат
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
 
-  // Името на потребителя
-  get username(): string {
-    return this.userService.user?.username || '';
-  }
-
-  // Инициализация на компонента, извличане на темата
   ngOnInit(): void {
     const id = this.route.snapshot.params['themeId'];
+    this.userId = this.userService.user?.id || '';
 
-    this.apiService.getSingleTheme(id).subscribe((theme) => {
+    this.loadTheme(id);
+  }
+
+  loadTheme(id: string) {
+    this.apiService.getSingleTheme(id).subscribe(theme => {
       this.theme = theme;
-      this.userId = this.userService.user?.id || ''; // Извличане на userId от UserService
     });
   }
 
-  // Метод за харесване на пост
   likePost(postId: string) {
     this.apiService.likePost(postId).subscribe({
       next: () => {
-        // Актуализираме броя на харесванията директно в компонента
         const post = this.theme.posts.find(p => p._id === postId);
-        if (post) {
+        if (post && !post.likes.includes(this.userId)) {
           post.likes.push(this.userId);
         }
       },
-      error: (err) => {
-        console.error('Грешка при харесване:', err);
-      }
+      error: err => console.error('Грешка при харесване:', err)
     });
   }
+  deletePost(postId: string) {
+    this.apiService.deletePost(postId).subscribe({
+      next: () => {
+        this.theme.posts = this.theme.posts.filter(p => p._id !== postId);
+      },
+      error: err => console.error('Грешка при изтриване:', err)
+    });
+  }
+  addComment(postId: string) {
+    const text = this.commentForm.value.text?.trim();
+    if (!text) return;
+
+    this.apiService.addComment(postId, text).subscribe({
+      next: comment => {
+        const post = this.theme.posts.find(p => p._id === postId);
+        if (post) {
+          post.comments = post.comments || [];
+          post.comments.push(comment);
+        }
+        this.commentForm.reset();
+      },
+      error: err => console.error('Грешка при добавяне на коментар:', err)
+    });
+  }
+
+  
 }

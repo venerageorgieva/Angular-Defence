@@ -1,57 +1,66 @@
 <div class="container">
   <!-- Тема на Майстори БГ -->
   <div class="theme-content">
-
     @if(!isLoggedIn){
-      <app-home />
+    <app-home />
     }
 
     <div class="theme-title">
       <div class="theme-name-wrapper">
         <div class="theme-name">
           <h2>{{ theme.themeName }}</h2>
-          <p>Дата на създаване: <time>{{ theme.created_at }}</time></p>
+          <p>
+            Дата на създаване: <time>{{ theme.created_at }}</time>
+          </p>
         </div>
         <div class="subscribers">
-          <p>Абонати: <span>{{ theme.subscribers.length || 0 }}</span></p>
+          <p>
+            Абонати: <span>{{ theme.subscribers.length || 0 }}</span>
+          </p>
         </div>
       </div>
     </div>
 
     <!-- Публикации по темата -->
     @for (post of theme.posts; track $index) {
-      <div class="comment">
-        <header class="header">
-          <p><span>{{ post.userId.username }}</span> публикува на <time>{{ post.created_at }}</time></p>
-        </header>
-        <div class="comment-main">
-          <div class="userdetails">
-            <img src="./profile.png" alt="avatar" />
-          </div>
-          <div class="post-content">
-            <p>{{ post.text }}</p>
-          </div>
+    <div class="comment">
+      <header class="header">
+        <p>
+          <span>{{ post.userId.username }}</span> публикува на
+          <time>{{ post.created_at }}</time>
+        </p>
+      </header>
+      <div class="comment-main">
+        <div class="userdetails">
+          <img src="./profile.png" alt="avatar" />
         </div>
-
-        <div class="footer">
-          <p><span>{{ post.likes.length || 0 }}</span> харесвания</p>
-
-          <!-- Харесай бутон -->
-          @if(isLoggedIn){
-            <button (click)="likePost(post._id)" class="like-btn">Харесай</button>
-          }
-
-          <!-- Edit/Delete ако е автора -->
-          @if(isLoggedIn && post.userId._id === userId){
-            <div class="post-actions">
-              <button class="edit-btn">Редактирай</button>
-              <button class="delete-btn">Изтрий</button>
-            </div>
-          }
+        <div class="post-content">
+          <p>{{ post.text }}</p>
         </div>
       </div>
-    }
 
-    
+      <div class="footer">
+        <p>
+          <span>{{ post.likes.length || 0 }}</span> харесвания
+        </p>
+
+        <!-- Харесай бутон -->
+        <button
+          (click)="likePost(post._id)"
+          class="like-btn"
+          [disabled]="post.likes.includes(userId)"
+        >
+          {{ post.likes.includes(userId) ? "Харесан" : "Харесай" }}
+        </button>
+        <!-- Edit/Delete ако е автора -->
+        @if(isLoggedIn && post.userId._id === userId){
+        <div class="post-actions">
+          <button class="edit-btn">Редактирай</button>
+          <button class="delete-btn">Изтрий</button>
+        </div>
+        }
+      </div>
+    </div>
+    }
   </div>
 </div>

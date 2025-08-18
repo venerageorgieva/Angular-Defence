@@ -48,17 +48,19 @@ export class CurrentThemeComponent implements OnInit {
     });
   }
 
-  likePost(postId: string) {
-    this.apiService.likePost(postId).subscribe({
-      next: () => {
-        const post = this.theme.posts.find(p => p._id === postId);
-        if (post && !post.likes.includes(this.userId)) {
-          post.likes.push(this.userId);
-        }
-      },
-      error: err => console.error('Грешка при харесване:', err)
-    });
-  }
+likePost(postId: string) {
+  this.apiService.likePost(postId).subscribe({
+    next: () => {
+      const post = this.theme.posts.find(p => p._id === postId);
+      if (post && !post.likes.includes(this.userId)) {
+        const currentUserId = this.userService.user?.id || '';
+        post.likes.push(currentUserId);
+      }
+    },
+    error: err => console.error('Грешка при харесване:', err)
+  });
+}
+
   deletePost(postId: string) {
     this.apiService.deletePost(postId).subscribe({
       next: () => {

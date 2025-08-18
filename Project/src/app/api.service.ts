@@ -47,24 +47,11 @@ export class ApiService {
     );
   }
 
-//   // delete -> http.delete theme ID
-//   deletePost(themeId: string, postId: string) {
-//     return this.http.delete(`/api/themes/${themeId}/posts/${postId}`);
-//   }
 
-// addComment(themeId: string, text: string) {
-//   return this.http.post<Post>(`/themes/${themeId}`, { text });
-// }
+  likePost(postId: string) {
+  return this.http.put(`/api/likes/${postId}`, {});
+}
 
-// likePost(postId: string): Observable<any> {
-//   return this.http.post(`/posts/${postId}`, {}); //
-// }
-
-
-// Харесване на пост
-  likePost(postId: string): Observable<any> {
-    return this.http.post(`/api/themes/posts/${postId}/like`, {});
-  }
 
   // Добавяне на коментар
   addComment(postId: string, text: string): Observable<Comment> {

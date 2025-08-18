@@ -1,4 +1,4 @@
-/* Aside секция */
+/* Цялата aside секция */
 aside {
   background: #ffffff;
   border-radius: 1rem;
@@ -13,39 +13,42 @@ aside {
 .aside .title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #edf2f7;
+  color: #2c3e50;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #d4af37; /* златна линия */
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
-/* Контейнер за постове */
+/* Единична тема (карта) */
 .aside-theme {
   background: #f9fafc;
-  border-radius: 0.8rem;
+  border-left: 5px solid #d4af37; /* златен акцент */
+  border-radius: 0.7rem;
   padding: 1rem;
   margin-bottom: 1rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Hover ефект */
 .aside-theme:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Линк */
+/* Линк вътре в темата */
 .aside-theme a {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-/* Име на тема */
+/* Заглавие на тема */
 .aside-theme h3 {
   font-size: 1.1rem;
   font-weight: 600;
   color: #2b6cb0;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
   transition: color 0.2s ease;
 }
 
@@ -53,7 +56,7 @@ aside {
   color: #0077ff;
 }
 
-/* Потребителско име */
+/* Автор */
 .aside-theme p {
   font-size: 0.9rem;
   color: #4a5568;

@@ -1,9 +1,23 @@
-/* Основен контейнер */
+/* Основен контейнер с grid */
 .theme-title {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr; /* по default – 1 колона за мобилни */
+  gap: 30px;
   padding: 20px;
+}
+
+/* 2 колони за таблет */
+@media (min-width: 768px) {
+  .theme-title {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 колони за десктоп */
+@media (min-width: 1200px) {
+  .theme-title {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Theme card */
@@ -11,7 +25,7 @@
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  padding: 20px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -22,8 +36,8 @@
 
 /* Theme header */
 .theme-name h2 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
   color: #007bff;
   text-decoration: none;
 }
@@ -37,12 +51,12 @@
   color: #007bff;
 }
 
-/* Columns */
+/* Columns вътре в картата */
 .columns {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  margin-top: 12px;
+  font-size: 1rem;
   color: #555;
 }
 
@@ -58,21 +72,21 @@
 /* Search bar */
 .search-bar {
   width: 100%;
-  max-width: 500px;
-  margin: 20px auto;
+  max-width: 1000px;   /* по-широк */
+  margin: 30px auto;
 }
 
 .search-bar input {
   width: 100%;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 14px 18px;
+  border-radius: 10px;
   border: 1px solid #ddd;
-  font-size: 1rem;
-  transition: border 0.2s;
+  font-size: 1.1rem;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
 .search-bar input:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
 }

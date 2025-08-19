@@ -3,44 +3,46 @@
   <div class="search-bar">
     <input
       type="text"
-      placeholder="🔍 Search themes..."
+      placeholder="🔍 Търси тема..."
       [(ngModel)]="searchTerm"
     />
   </div>
 
   @if (isLoading) {
-    <app-loader />
+  <app-loader />
   } @else {
-    <div class="theme-title">
-      @for (theme of themes | search:searchTerm:'themeName'; track $index) {
-        <div class="theme-container">
-          <div class="theme-name-wrapper">
-            <div class="theme-name">
-              <a [routerLink]="theme._id" class="normal">
-                <h2>{{ theme.themeName | slice : 25 }}</h2>
-              </a>
-              <div class="columns">
-                <div>
-                  <p>
-                    Date:
-                    <time>{{ theme.created_at | date : "yyyy-MM-dd HH:mm:ss" }}</time>
-                  </p>
-                  <div class="nick-name">
-                    <p>
-                      Username: <span>{{ theme.userId.username }}</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="subscribers">
-                  <p>
-                    Subscribers: <span>{{ theme?.subscribers?.length || 0 }}</span>
-                  </p>
-                </div>
+  <div class="theme-title">
+    @for (theme of themes | search:searchTerm:'themeName'; track $index) {
+    <div class="theme-container">
+      <div class="theme-name-wrapper">
+        <div class="theme-name">
+          <a [routerLink]="theme._id" class="normal">
+            <h2>{{ theme.themeName | slice : 25 }}</h2>
+          </a>
+          <div class="columns">
+            <div>
+              <p>
+                Date:
+                <time>{{
+                  theme.created_at | date : "yyyy-MM-dd HH:mm:ss"
+                }}</time>
+              </p>
+              <div class="nick-name">
+                <p>
+                  Username: <span>{{ theme.userId.username }}</span>
+                </p>
               </div>
+            </div>
+            <div class="subscribers">
+              <p>
+                Subscribers: <span>{{ theme?.subscribers?.length || 0 }}</span>
+              </p>
             </div>
           </div>
         </div>
-      }
+      </div>
     </div>
+    }
+  </div>
   }
 </main>

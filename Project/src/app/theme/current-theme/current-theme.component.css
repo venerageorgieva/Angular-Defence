@@ -185,3 +185,8 @@ button {
 button:hover {
   background: #1c3451;
 }
+
+.like-btn:disabled {
+  background-color: #199ad5;
+  cursor: not-allowed;
+}

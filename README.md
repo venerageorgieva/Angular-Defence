@@ -48,14 +48,22 @@ Angular CLI
 
 npm
 
+<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 47 14" src="https://github.com/user-attachments/assets/275e5f09-b71b-4191-a680-dd589c86f620" />
 
-<img width="1440" height="820" alt="Screenshot 2025-08-18 at 18 22 32" src="https://github.com/user-attachments/assets/f6ce725a-0ec5-49cc-85c2-6e9320f4cb0f" />
-<img width="1440" height="821" alt="Screenshot 2025-08-18 at 18 26 28" src="https://github.com/user-attachments/assets/acc320a6-106d-4045-a44e-cdb7cde4686a" />
-<img width="1440" height="820" alt="Screenshot 2025-08-18 at 18 26 15" src="https://github.com/user-attachments/assets/d0556df3-dfa1-42b0-8deb-b7429250383a" />
-<img width="1440" height="821" alt="Screenshot 2025-08-18 at 18 23 20" src="https://github.com/user-attachments/assets/f16f6f35-0dd4-43d4-8281-2dc3e6392dac" />
-<img width="1440" height="821" alt="Screenshot 2025-08-18 at 18 23 00" src="https://github.com/user-attachments/assets/3e4f4c9b-592d-49b2-bda4-d783b53b663f" />
-<img width="1440" height="820" alt="Screenshot 2025-08-18 at 18 23 12" src="https://github.com/user-attachments/assets/b0351f02-ea97-4739-8bed-346a1cd04852" />
-<img width="1440" height="820" alt="Screenshot 2025-08-18 at 18 27 47" src="https://github.com/user-attachments/assets/29a76517-04b5-4881-9ea0-182d214070cb" />
+<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 47 44" src="https://github.com/user-attachments/assets/7b91dc42-5058-4f03-b470-b7ebb0cf155f" />
+
+<img width="1440" height="812" alt="Screenshot 2025-08-20 at 16 47 25" src="https://github.com/user-attachments/assets/0cfd64fe-1089-4684-9554-91d104954aa8" />
+
+<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 48 02" src="https://github.com/user-attachments/assets/96627605-5ab1-4ddd-b24a-88ad4943ba62" />
+
+<img width="1440" height="812" alt="Screenshot 2025-08-20 at 16 48 14" src="https://github.com/user-attachments/assets/905f3f7c-ced4-4fa1-8e75-fe04a84463b6" />
+
+
+<img width="1440" height="813" alt="Screenshot 2025-08-20 at 16 48 25" src="https://github.com/user-attachments/assets/8e930656-315c-4c02-9857-f5657a9a99e8" />
+
+<img width="575" height="64" alt="Screenshot 2025-08-20 at 16 48 38" src="https://github.com/user-attachments/assets/5168fb05-33dc-40f8-84ab-9900e7ce235e" />
+
+<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 49 02" src="https://github.com/user-attachments/assets/f81de443-e6a5-4827-9366-b374a855c91a" />
 
 
 

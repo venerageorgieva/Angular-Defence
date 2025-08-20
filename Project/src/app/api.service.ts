@@ -49,7 +49,7 @@ export class ApiService {
 
 
   likePost(postId: string) {
-  return this.http.put<Post>(`/api/likes/${postId}`, {});
+  return this.http.put(`/api/likes/${postId}`, {});
 }
 
 

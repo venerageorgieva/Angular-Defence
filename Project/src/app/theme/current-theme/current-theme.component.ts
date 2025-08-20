@@ -55,6 +55,10 @@ likePost(postId: string) {
       if (post && !post.likes.includes(this.userId)) {
         const currentUserId = this.userService.user?.id || '';
         post.likes.push(currentUserId);
+        console.log(post.likes)
+        console.log(currentUserId);
+        
+        
       }
     },
     error: err => console.error('Грешка при харесване:', err)

@@ -49,16 +49,19 @@ export class CurrentThemeComponent implements OnInit {
   }
 
 likePost(postId: string) {
+
+  
   this.apiService.likePost(postId).subscribe({
     next: () => {
       const post = this.theme.posts.find(p => p._id === postId);
+
+        if (post?.likes.includes(this.userId)) {
+    return;
+  }
       if (post && !post.likes.includes(this.userId)) {
         const currentUserId = this.userService.user?.id || '';
         post.likes.push(currentUserId);
-        console.log(post.likes)
-        console.log(currentUserId);
-        
-        
+      
       }
     },
     error: err => console.error('Грешка при харесване:', err)

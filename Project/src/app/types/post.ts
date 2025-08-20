@@ -3,7 +3,8 @@ import { User } from './user';
 
 export interface Post {
   likes: string[];
-  _id: string;
+  _id?: string;
+  id?:string
   text: string;
   userId: User;
   themeId: Theme;

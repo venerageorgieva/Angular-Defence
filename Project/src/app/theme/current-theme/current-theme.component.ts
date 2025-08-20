@@ -48,18 +48,27 @@ export class CurrentThemeComponent implements OnInit {
     });
   }
 
-likePost(postId: string) {
+likePost(postId?: string) {
+  if (!postId) {
+    console.error('⚠️ postId е undefined!');
+    return;
+  }
+
   this.apiService.likePost(postId).subscribe({
-    next: () => {
-      const post = this.theme.posts.find(p => p._id === postId);
-      if (post && !post.likes.includes(this.userId)) {
-        const currentUserId = this.userService.user?.id || '';
-        post.likes.push(currentUserId);
+    next: (updatedPost: Post) => {
+      const index = this.theme.posts.findIndex(
+        p => p._id === postId || (p as any).id === postId
+      );
+      if (index !== -1) {
+        this.theme.posts[index] = updatedPost;
       }
     },
-    error: err => console.error('Грешка при харесване:', err)
+    error: err => console.error('❌ Грешка при харесване:', err)
   });
 }
+
+
+
 
   deletePost(postId: string) {
     this.apiService.deletePost(postId).subscribe({

@@ -13,14 +13,7 @@
             Дата на създаване: <time>{{ theme.created_at }}</time>
           </p>
         </div>
-        <div class="subscribers">
-          <p>
-            Абонати: <span>{{ theme.subscribers.length || 0 }}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
+    
     <!-- Публикации по темата -->
     @for (post of theme.posts; track $index) {
     <div class="comment">
@@ -44,13 +37,11 @@
         </p>
 
         <!-- Харесай бутон -->
-        <button
-          (click)="likePost(post._id)"
-          class="like-btn"
-          [disabled]="post.likes.includes(userId)"
-        >
-          {{ post.likes.includes(userId) ? "Харесан" : "Харесай" }}
-        </button>
+     <button (click)="likePost(post._id || post.id)" class="like-btn">
+
+  {{ post.likes.includes(userId) ? 'Харесан' : 'Харесай' }}
+</button>
+
         <!-- Edit/Delete ако е автора -->
         @if(isLoggedIn && post.userId._id === userId){
         <div class="post-actions">

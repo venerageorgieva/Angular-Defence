@@ -20,8 +20,7 @@
   font-size: 1.8rem;
 }
 
-.theme-name p,
-.subscribers p {
+.theme-name p {
   color: #555;
   margin: 0.5rem 0 0;
 }
@@ -44,12 +43,6 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-}
-
-.userdetails img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }
 
 .post-content p {
@@ -82,37 +75,6 @@
   background-color: #dc3545;
 }
 
-.answer-comment {
-  margin-top: 2rem;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.answer-comment p {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.answer textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-.answer .post-btn {
-  margin-top: 0.5rem;
-  padding: 0.6rem 1rem;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .like-btn {
   background-color: #4caf50;
   color: white;
@@ -123,70 +85,21 @@
   font-size: 14px;
   transition: background-color 0.3s, transform 0.2s;
 }
+.like-btn:hover { background-color: #45a049; transform: scale(1.05); }
+.like-btn:active { background-color: #388e3c; transform: scale(0.98); }
+.like-btn:disabled { background-color: #199ad5; cursor: not-allowed; }
 
-.like-btn:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-}
-
-.like-btn:active {
-  background-color: #388e3c;
-  transform: scale(0.98);
-}
-
-.like-btn {
+.edit-section {
   margin-top: 10px;
-  display: inline-block;
-}
-
-.container {
-  max-width: 700px;
-  margin: 40px auto;
-  font-family: "Segoe UI", sans-serif;
-}
-.theme-title h2 {
-  color: #234465;
-}
-.comment {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background: #fff;
-}
-.comment-main {
-  margin: 10px 0;
-}
-.footer {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  gap: 8px;
 }
-.comments-section {
-  padding-left: 20px;
-  margin-top: 10px;
-  border-left: 2px solid #eee;
-}
-input[type="text"] {
+.edit-section input {
+  flex: 1;
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 80%;
-  margin-right: 5px;
-}
-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background: #234465;
-  color: #fff;
-  cursor: pointer;
-}
-button:hover {
-  background: #1c3451;
+  border: 1px solid #aaa;
+  border-radius: 4px;
 }
 
-.like-btn:disabled {
-  background-color: #199ad5;
-  cursor: not-allowed;
-}
+.error-box { margin-top: 6px; }
+.error { color: #c62828; font-size: .85rem; }

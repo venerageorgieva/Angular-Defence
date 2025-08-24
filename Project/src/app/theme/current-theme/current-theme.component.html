@@ -1,60 +1,85 @@
 <div class="container">
-  <!-- Тема на Майстори БГ -->
   <div class="theme-content">
     @if(!isLoggedIn){
-    <app-home />
+      <app-home />
     }
 
     <div class="theme-title">
       <div class="theme-name-wrapper">
         <div class="theme-name">
           <h2>{{ theme.themeName }}</h2>
-          <p>
-            Дата на създаване: <time>{{ theme.created_at }}</time>
-          </p>
+          <p>Дата на създаване: <time>{{ theme.created_at }}</time></p>
         </div>
       </div>
     </div>
 
     <!-- Публикации по темата -->
-    @for (post of theme.posts; track $index) {
-    <div class="comment">
-      <header class="header">
-        <p>
-          <span>{{ post.userId.username }}</span> публикува на
-          <time>{{ post.created_at }}</time>
-        </p>
-      </header>
-      <div class="comment-main">
-        <div class="userdetails">
-        </div>
-        <div class="post-content">
-          <p>{{ post.text }}</p>
-        </div>
-      </div>
+    @for (post of theme.posts; track post._id) {
+      <div class="comment">
+        <header class="header">
+          <p>
+            <span>{{ post.userId.username }}</span> публикува на
+            <time>{{ post.created_at }}</time>
+          </p>
+        </header>
 
-      <div class="footer">
-        <p>
-          <span>{{ post.likes.length || 0 }}</span> харесвания
-        </p>
+        
+        @if(editingPostId !== post._id){
+          <div class="comment-main">
+            <div class="userdetails"></div>
+            <div class="post-content">
+              <p>{{ post.text }}</p>
+            </div>
+          </div>
 
-        <!-- Харесай бутон -->
-        <button
-          (click)="likePost(post._id)"
-          class="like-btn"
-          [disabled]="post.likes.includes(userId)"
-        >
-          {{ post.likes.includes(userId) ? "Харесан" : "Харесай" }}
-        </button>
-        <!-- Edit/Delete ако е автора -->
-        @if(isLoggedIn && post.userId._id === userId){
-        <div class="post-actions">
-          <button class="edit-btn">Редактирай</button>
-          <button class="delete-btn">Изтрий</button>
-        </div>
+          <div class="footer">
+            <p><span>{{ post.likes.length || 0 }}</span> харесвания</p>
+
+            <button
+              (click)="likePost(post._id)"
+              class="like-btn"
+              [disabled]="(post.likes || []).includes(userId)"
+            >
+              {{ (post.likes || []).includes(userId) ? "Харесан" : "Харесай" }}
+            </button>
+
+            @if(isLoggedIn && post.userId._id === userId){
+              <div class="post-actions">
+                <button class="edit-btn" (click)="startEdit(post)">Редактирай</button>
+                <button class="delete-btn" (click)="deletePost(post._id)">Изтрий</button>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- EDIT MODE -->
+        @if(editingPostId === post._id){
+          <form
+            class="edit-section"
+            [formGroup]="editForm"
+            (ngSubmit)="handleUpdatePost(post._id)"
+          >
+            <input
+              type="text"
+              formControlName="text"
+              placeholder="Редактирай текста..."
+            />
+            <button type="button" (click)="cancelEdit()">Откажи</button>
+            <button type="submit" [disabled]="editForm.invalid">Запази</button>
+          </form>
+
+          @if(editForm.get('text')?.touched){
+            <div class="error-box">
+              @if(editForm.get('text')?.errors?.['required']){
+                <p class="error">Текстът е задължителен.</p>
+              }
+              @if(editForm.get('text')?.errors?.['minlength']){
+                <p class="error">Минимум 1 символ.</p>
+              }
+            </div>
+          }
         }
       </div>
-    </div>
     }
   </div>
 </div>

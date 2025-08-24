@@ -10,15 +10,7 @@ import { Theme } from './types/theme';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getPosts(limit?: number) {
-    let url = `/api/posts`;
-    if (limit) {
-      url += `?limit=${limit}`;
-    }
-
-    return this.http.get<Post[]>(url);
-  }
-
+  // ===== THEMES =====
   getThemes() {
     return this.http.get<Theme[]>(`/api/themes`);
   }
@@ -28,43 +20,41 @@ export class ApiService {
   }
 
   createTheme(themeName: string, postText: string) {
-    const payload = { themeName, postText };
-    return this.http.post<Theme>(`/api/themes`, payload);
+    return this.http.post<Theme>(`/api/themes`, { themeName, postText });
   }
 
-  // CRUD operations
-  // update -> http.put
   updateTheme(themeId: string, themeName: string, postText: string) {
-    const payload = { themeName, postText };
-    return this.http.put<Theme>(`/api/themes/${themeId}`, payload);
+    return this.http.put<Theme>(`/api/themes/${themeId}`, { themeName, postText });
   }
 
-  updatePost(themeId: string, postId: string) {
-    const payload = {};
-    return this.http.put<Theme>(
-      `/api/themes/${themeId}/posts/${postId}`,
-      payload
-    );
+  deleteTheme(themeId: string): Observable<void> {
+    return this.http.delete<void>(`/api/themes/${themeId}`);
   }
 
+  // ===== POSTS =====
+  getPosts(limit?: number) {
+    let url = `/api/posts`;
+    if (limit) url += `?limit=${limit}`;
+    return this.http.get<Post[]>(url);
+  }
 
-  likePost(postId: string) {
-  return this.http.put(`/api/likes/${postId}`, {});
+// === ИЗТРИВАНЕ НА ПОСТ ===
+deletePost(themeId: string, postId: string): Observable<void> {
+  return this.http.delete<void>(`/api/themes/${themeId}/posts/${postId}`);
+}
+
+// === РЕДАКЦИЯ НА ПОСТ ===
+updatePost(themeId: string, postId: string, text: string): Observable<Post> {
+  return this.http.put<Post>(`/api/themes/${themeId}/posts/${postId}`, { postText: text });
 }
 
 
-  // Добавяне на коментар
-  addComment(postId: string, text: string): Observable<Comment> {
-    return this.http.post<Comment>(`/api/themes/posts/${postId}/comments`, { text });
+  likePost(postId: string) {
+    return this.http.put(`/api/likes/${postId}`, {});
   }
 
-  // Изтриване на пост
-  deletePost(postId: string): Observable<any> {
-    return this.http.delete(`/api/themes/posts/${postId}`);
-  }
-
-  // Изтриване на коментар
-  deleteComment(postId: string, commentId: string): Observable<any> {
-    return this.http.delete(`/api/themes/posts/${postId}/comments/${commentId}`);
+  // ===== COMMENTS =====
+  addComment(themeId: string, postText: string): Observable<Post> {
+    return this.http.post<Post>(`/api/themes/${themeId}`, { postText });
   }
 }

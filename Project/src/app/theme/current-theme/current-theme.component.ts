@@ -1,18 +1,17 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { Theme } from '../../types/theme';
 import { Post } from '../../types/post';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { User } from '../../types/user';
 import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-current-theme',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,HomeComponent,CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, HomeComponent],
   templateUrl: './current-theme.component.html',
   styleUrls: ['./current-theme.component.css']
 })
@@ -20,10 +19,15 @@ export class CurrentThemeComponent implements OnInit {
   theme = {} as Theme;
   userId: string = '';
 
-  commentForm = new FormGroup({
-    text: new FormControl('')
+  // Форма за редакция
+  editForm = new FormGroup({
+    text: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(1)]
+    })
   });
-  comment: any;
+
+  editingPostId: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,61 +41,73 @@ export class CurrentThemeComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['themeId'];
-    this.userId = this.userService.user?.id || '';
+
+    // fallback за id / _id
+    this.userId =
+      (this.userService.user as any)?._id ||
+      (this.userService.user as any)?.id ||
+      '';
 
     this.loadTheme(id);
   }
 
   loadTheme(id: string) {
-    this.apiService.getSingleTheme(id).subscribe(theme => {
-      this.theme = theme;
+    this.apiService.getSingleTheme(id).subscribe({
+      next: (theme) => (this.theme = theme),
+      error: (err) => console.error('Грешка при зареждане на тема:', err)
     });
   }
 
-likePost(postId: string) {
-
-  
-  this.apiService.likePost(postId).subscribe({
-    next: () => {
-      const post = this.theme.posts.find(p => p._id === postId);
-
-        if (post?.likes.includes(this.userId)) {
-    return;
+  likePost(postId: string) {
+    this.apiService.likePost(postId).subscribe({
+      next: () => {
+        const post = this.theme.posts.find((p) => p._id === postId);
+        if (post && !(post.likes || []).includes(this.userId)) {
+          post.likes = post.likes || [];
+          post.likes.push(this.userId);
+        }
+      },
+      error: (err) => console.error('Грешка при харесване:', err)
+    });
   }
-      if (post && !post.likes.includes(this.userId)) {
-        const currentUserId = this.userService.user?.id || '';
-        post.likes.push(currentUserId);
-      
-      }
+
+deletePost(postId: string) {
+  this.apiService.deletePost(this.theme._id, postId).subscribe({
+    next: () => {
+      this.theme.posts = this.theme.posts.filter((p) => p._id !== postId);
     },
-    error: err => console.error('Грешка при харесване:', err)
+    error: (err) => console.error('Грешка при изтриване:', err)
   });
 }
 
-  deletePost(postId: string) {
-    this.apiService.deletePost(postId).subscribe({
-      next: () => {
-        this.theme.posts = this.theme.posts.filter(p => p._id !== postId);
-      },
-      error: err => console.error('Грешка при изтриване:', err)
-    });
+
+  // ----- EDIT -----
+  startEdit(post: Post) {
+    this.editingPostId = post._id;
+    this.editForm.setValue({ text: post.text || '' });
+    this.editForm.markAsPristine();
   }
-  addComment(postId: string) {
-    const text = this.commentForm.value.text?.trim();
+
+  cancelEdit() {
+    this.editingPostId = null;
+    this.editForm.reset({ text: '' });
+  }
+
+  handleUpdatePost(postId: string) {
+    if (this.editForm.invalid) return;
+
+    const text = (this.editForm.value.text || '').trim();
     if (!text) return;
 
-    this.apiService.addComment(postId, text).subscribe({
-      next: comment => {
-        const post = this.theme.posts.find(p => p._id === postId);
+    this.apiService.updatePost(this.theme._id, postId, text).subscribe({
+      next: (updatedPost: Post) => {
+        const post = this.theme.posts.find((p) => p._id === postId);
         if (post) {
-          post.comments = post.comments || [];
-          post.comments.push(comment);
+          post.text = updatedPost?.text ?? text;
         }
-        this.commentForm.reset();
+        this.cancelEdit();
       },
-      error: err => console.error('Грешка при добавяне на коментар:', err)
+      error: (err) => console.error('Грешка при редакция:', err)
     });
   }
-
-  
 }

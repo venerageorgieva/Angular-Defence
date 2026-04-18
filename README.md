@@ -22,6 +22,9 @@ Node.js (версия 16+ препоръчителна)
 Angular CLI
 npm
 
+При регистрация:
+Валидни само gmail имейли! 
+
 ------------------------------------------------------------------------------
 ENGLISH 
 
@@ -45,8 +48,12 @@ npm start
 🔹 Requirements
 Node.js (v16+ recommended)
 Angular CLI
-
 npm
+
+
+At registration: 
+
+ONLY GMAIL EMAILS ARE VALID!
 
 <img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 47 14" src="https://github.com/user-attachments/assets/275e5f09-b71b-4191-a680-dd589c86f620" />
 

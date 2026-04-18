@@ -8,14 +8,14 @@ Angular Course - Project Defence
 ✍️ Създаване на постове – потребителите могат да публикуват нови теми/коментари.
 🛠 Редакция на профил – промяна на данни в потребителския акаунт.
 🔹 Стартиране на проекта
+ВАЖНО! Не забравяй да стартираш МонгоДБ 
 Проектът е разделен на две части: Frontend (Angular) и Backend (REST API).
 1. Frontend (Angular)
-cd forum
-ng serve
+Терминал в папка Project след това команда ng serve
 ➡️ Приложението ще стартира по подразбиране на: http://localhost:4200/
 2. Backend (REST API – Node.js / Express)
-cd rest-api
-npm start
+Терминал в папка rest-api
+след това команда npm start
 ➡️ API сървърът ще стартира на съответния порт (http://localhost:3000/).
 🔹 Изисквания
 Node.js (версия 16+ препоръчителна)
@@ -33,13 +33,13 @@ BG Maistor is a web forum where users can read and create posts, as well as mana
 ✍️ Create posts – users can publish new topics/comments.
 🛠 Edit profile – update personal account information.
 🔹 Project Startup
+IMPORTANT : Don't forget to start MongoDB
 The project is split into two parts: Frontend (Angular) and Backend (REST API).
 1. Frontend (Angular)
-cd forum
-ng serve
+Open the terminal in folder ,,Project'' and then type the command ng serve
 ➡️ The app will run by default at: http://localhost:4200/
 2. Backend (REST API – Node.js / Express)
-cd rest-api
+Open the terminal in folder ,,Rest-api'' and then input the command npm start
 npm start
 ➡️ The API server will run on the corresponding port (http://localhost:3000/).
 🔹 Requirements

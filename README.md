@@ -8,23 +8,23 @@ Angular Project - Functional Guide
 The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
 <br>
 2. User Roles
-- Guest (Not Authenticated User)
-- Can view the home page
-- Can browse all advice posts
-- Can view details of specific posts
-- Can search posts using the search bar
-- Can register or login
+<br> Guest (Not Authenticated User)
+<br> Can view the home page
+<br> Can browse all advice posts
+<br> Can view details of specific posts
+<br> Can search posts using the search bar
+<br> Can register or login
 <br>
 <img width="1440" height="814" alt="480048730-7b91dc42-5058-4f03-b470-b7ebb0cf155f" src="https://github.com/user-attachments/assets/4180aa4b-e5cb-46fa-9237-b72e4397a8c9" />
 
 <br>
 Authenticated User
-- Can create new advice posts
-- Can edit their own posts
-- Can delete their own posts (currently deletes only the advice, not the entire theme)
-- Can like posts
-- Can search posts
-- Can edit and manage their profile information
+<br> Can create new advice posts
+<br> Can edit their own posts
+<br> Can delete their own posts (currently deletes only the advice, not the entire theme)
+<br> Can like posts
+<br> Can search posts
+<br> Can edit and manage their profile information
 <br>
 <img width="1440" height="812" alt="480049118-905f3f7c-ced4-4fa1-8e75-fe04a84463b6" src="https://github.com/user-attachments/assets/f338d376-e5ec-485f-9725-a43fa682cf32" />
 <br>
@@ -36,23 +36,23 @@ Authenticated User
 
 <br>
 4. Public Features
-- Home page
-- Catalog page displaying all advice posts
-- Details page showing full information about a specific post
-- Search functionality for filtering posts
-- Login page
-- Registration page
+<br> Home page
+<br> Catalog page displaying all advice posts
+<br> Details page showing full information about a specific post
+<br> Search functionality for filtering posts
+<br> Login page
+<br> Registration page
 <br>
 5. Main Application Flow
-- User opens the Home page
-- User navigates to the Catalog page to browse advice
-- User searches for specific advice using the search bar (optional)
-- User selects a post and views its details
-- User registers or logs in
-- Authenticated user creates a new advice post
-- The post appears in the Catalog
-- User can edit or delete their own posts
-- User can like other posts and update their profile
+<br> User opens the Home page
+<br> User navigates to the Catalog page to browse advice
+<br> User searches for specific advice using the search bar (optional)
+<br> User selects a post and views its details
+<br> User registers or logs in
+<br> Authenticated user creates a new advice post
+<br> The post appears in the Catalog
+<br> User can edit or delete their own posts
+<br> User can like other posts and update their profile
 <br>
 6. Data Structure
 <br> Advice Post Object
@@ -66,22 +66,22 @@ Authenticated User
 <br>__v
 <br>
 7. Project Architecture
-- components/ – UI components (home, catalog, details, login, register, profile, etc.)
-- services/ – Handles API requests and business logic
-- models/ – Defines data structures (user, post, etc.)
-- guards/ – Route protection for authenticated users
-- shared/ – Reusable components and utilities
+<br> components/ – UI components (home, catalog, details, login, register, profile, etc.)
+<br> services/ – Handles API requests and business logic
+<br> models/ – Defines data structures (user, post, etc.)
+<br> guards/ – Route protection for authenticated users
+<br> shared/ – Reusable components and utilities
 <br>
 8. Technologies Used
-- Angular
-- TypeScript
-- Node.js (REST API)
-- MongoDB
-- HTML / CSS
+<br> Angular
+<br> TypeScript
+<br> Node.js (REST API)
+<br> MongoDB
+<br> HTML / CSS
 <br>
 9. How to Run the Project
-- Clone the repository
-- Open a terminal and navigate to the project folder:
+<br> Clone the repository
+<br> Open a terminal and navigate to the project folder:
 <br> cd project
 <br> Install dependencies:
 <br> npm install

@@ -7,6 +7,8 @@ import { Post } from '../../types/post';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from '../../home/home.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-current-theme',
@@ -32,7 +34,8 @@ export class CurrentThemeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   get isLoggedIn(): boolean {
@@ -75,6 +78,7 @@ deletePost(postId: string) {
   this.apiService.deletePost(this.theme._id, postId).subscribe({
     next: () => {
       this.theme.posts = this.theme.posts.filter((p) => p._id !== postId);
+       this.router.navigate(['/themes']); 
     },
     error: (err) => console.error('Грешка при изтриване:', err)
   });

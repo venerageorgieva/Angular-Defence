@@ -1,77 +1,93 @@
-# Angular-Defence
-Angular Course - Project Defence
+<img width="1440" height="814" alt="480048680-275e5f09-b71b-4191-a680-dd589c86f620" src="https://github.com/user-attachments/assets/e4964e9b-944d-4346-849a-b9591dce6153" />
 
-🔹 Описание
-БГ Майстор е уеб форум, в който потребителите могат да четат и създават постове, както и да управляват личните си профили. Достъпът до съдържанието е възможен само за регистрирани и логнати потребители.
-🔹 Основни функционалности
-📖 Четене на постове – достъпно след регистрация и вход.
-✍️ Създаване на постове – потребителите могат да публикуват нови теми/коментари.
-🛠 Редакция на профил – промяна на данни в потребителския акаунт.
-🔹 Стартиране на проекта
-ВАЖНО! Не забравяй да стартираш МонгоДБ 
-Проектът е разделен на две части: Frontend (Angular) и Backend (REST API).
-1. Frontend (Angular)
-Терминал в папка Project след това команда ng serve
-➡️ Приложението ще стартира по подразбиране на: http://localhost:4200/
-2. Backend (REST API – Node.js / Express)
-Терминал в папка rest-api
-след това команда npm start
-➡️ API сървърът ще стартира на съответния порт (http://localhost:3000/).
-🔹 Изисквания
-Node.js (версия 16+ препоръчителна)
-Angular CLI
-npm
+Angular Project - Functional Guide
 
-При регистрация:
-Валидни само gmail имейли! 
+1. Application Purpose
+The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
 
-------------------------------------------------------------------------------
-ENGLISH 
+2. User Roles
+Guest (Not Authenticated User)
+Can view the home page
+Can browse all advice posts
+Can view details of specific posts
+Can search posts using the search bar
+Can register or login
+Authenticated User
+Can create new advice posts
+Can edit their own posts
+Can delete their own posts (currently deletes only the advice, not the entire theme)
+Can like posts
+Can search posts
+Can edit and manage their profile information
 
-Documentation – Forum BG Maistor
-🔹 Overview
-BG Maistor is a web forum where users can read and create posts, as well as manage their personal profiles. Access to the content is available only for registered and logged-in users.
-🔹 Main Features
-📖 Read posts – available after registration and login.
-✍️ Create posts – users can publish new topics/comments.
-🛠 Edit profile – update personal account information.
-🔹 Project Startup
-IMPORTANT : Don't forget to start MongoDB
-The project is split into two parts: Frontend (Angular) and Backend (REST API).
-1. Frontend (Angular)
-Open the terminal in folder ,,Project'' and then type the command ng serve
-➡️ The app will run by default at: http://localhost:4200/
-2. Backend (REST API – Node.js / Express)
-Open the terminal in folder ,,Rest-api'' and then input the command npm start
+<img width="1440" height="814" alt="480048994-96627605-5ab1-4ddd-b24a-88ad4943ba62" src="https://github.com/user-attachments/assets/72a0f01a-ec26-44a6-9097-17a1e3cf8ce0" />
+
+
+4. Public Features
+Home page
+Catalog page displaying all advice posts
+Details page showing full information about a specific post
+Search functionality for filtering posts
+Login page
+Registration page
+
+<img width="1440" height="814" alt="480049550-f81de443-e6a5-4827-9366-b374a855c91a" src="https://github.com/user-attachments/assets/e66d313b-b24d-4730-9fd2-9dad5d0d25db" />
+
+
+6. Main Application Flow
+User opens the Home page
+User navigates to the Catalog page to browse advice
+User searches for specific advice using the search bar (optional)
+User selects a post and views its details
+User registers or logs in
+Authenticated user creates a new advice post
+The post appears in the Catalog
+User can edit or delete their own posts
+User can like other posts and update their profile
+
+7. Data Structure
+
+Advice Post Object
+_id
+likes
+text
+userId
+themeId
+created_at
+updatedAt
+__v
+
+8. Project Architecture
+components/ – UI components (home, catalog, details, login, register, profile, etc.)
+services/ – Handles API requests and business logic
+models/ – Defines data structures (user, post, etc.)
+guards/ – Route protection for authenticated users
+shared/ – Reusable components and utilities
+
+9. Technologies Used
+Angular
+TypeScript
+Node.js (REST API)
+MongoDB
+HTML / CSS
+
+
+<img width="1440" height="814" alt="480048680-275e5f09-b71b-4191-a680-dd589c86f620" src="https://github.com/user-attachments/assets/050d0408-2e70-4658-8917-5c727b8ad525" />
+
+
+8. How to Run the Project
+Clone the repository
+Open a terminal and navigate to the project folder:
+cd project
+Install dependencies:
+npm install
+Start the Angular application:
+ng serve
+Open another terminal and navigate to the backend folder:
+cd rest-api
+Start the backend server:
+npm install
 npm start
-➡️ The API server will run on the corresponding port (http://localhost:3000/).
-🔹 Requirements
-Node.js (v16+ recommended)
-Angular CLI
-npm
-
-
-At registration: 
-
-ONLY GMAIL EMAILS ARE VALID!
-
-<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 47 14" src="https://github.com/user-attachments/assets/275e5f09-b71b-4191-a680-dd589c86f620" />
-
-<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 47 44" src="https://github.com/user-attachments/assets/7b91dc42-5058-4f03-b470-b7ebb0cf155f" />
-
-<img width="1440" height="812" alt="Screenshot 2025-08-20 at 16 47 25" src="https://github.com/user-attachments/assets/0cfd64fe-1089-4684-9554-91d104954aa8" />
-
-<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 48 02" src="https://github.com/user-attachments/assets/96627605-5ab1-4ddd-b24a-88ad4943ba62" />
-
-<img width="1440" height="812" alt="Screenshot 2025-08-20 at 16 48 14" src="https://github.com/user-attachments/assets/905f3f7c-ced4-4fa1-8e75-fe04a84463b6" />
-
-
-<img width="1440" height="813" alt="Screenshot 2025-08-20 at 16 48 25" src="https://github.com/user-attachments/assets/8e930656-315c-4c02-9857-f5657a9a99e8" />
-
-<img width="575" height="64" alt="Screenshot 2025-08-20 at 16 48 38" src="https://github.com/user-attachments/assets/5168fb05-33dc-40f8-84ab-9900e7ce235e" />
-
-<img width="1440" height="814" alt="Screenshot 2025-08-20 at 16 49 02" src="https://github.com/user-attachments/assets/f81de443-e6a5-4827-9366-b374a855c91a" />
-
-
-
-
+Make sure MongoDB is running
+Open the application in your browser:
+http://localhost:4200

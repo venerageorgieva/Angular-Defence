@@ -5,11 +5,16 @@
     }
 
     <div class="theme-title">
+      
       <div class="theme-name-wrapper">
         <div class="theme-name">
           <h2>{{ theme.themeName }}</h2>
           <p>Дата на създаване: <time>{{ theme.created_at }}</time></p>
         </div>
+
+    @if(isLoggedIn && theme.userId === userId){
+  <button class="delete-btn" (click)="deleteTheme()">Изтрий тема</button>
+}
       </div>
     </div>
 

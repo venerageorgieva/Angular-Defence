@@ -54,13 +54,17 @@ export class CurrentThemeComponent implements OnInit {
     this.loadTheme(id);
   }
 
-  loadTheme(id: string) {
-    this.apiService.getSingleTheme(id).subscribe({
-      next: (theme) => (this.theme = theme),
-      error: (err) => console.error('Грешка при зареждане на тема:', err)
-    });
-  }
-
+loadTheme(id: string) {
+  this.apiService.getSingleTheme(id).subscribe({
+    next: (theme) => {
+      this.theme = theme;
+      console.log('theme.userId._id:', theme.userId);  // ← добави
+      console.log('userId:', this.userId);  
+      console.log('theme.userId:', theme.userId);
+    },
+    error: (err) => console.error('Грешка при зареждане на тема:', err)
+  });
+}
   likePost(postId: string) {
     this.apiService.likePost(postId).subscribe({
       next: () => {
@@ -96,6 +100,16 @@ deletePost(postId: string) {
     this.editingPostId = null;
     this.editForm.reset({ text: '' });
   }
+
+  deleteTheme() {
+  if (!confirm('Сигурен ли си, че искаш да изтриеш тази тема?')) return;
+
+
+  this.apiService.deleteTheme(this.theme._id).subscribe({
+    next: () => this.router.navigate(['/']),
+    error: (err) => console.error('Грешка при изтриване на тема:', err)
+  });
+}
 
   handleUpdatePost(postId: string) {
     if (this.editForm.invalid) return;

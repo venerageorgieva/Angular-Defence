@@ -58,3 +58,5 @@ updatePost(themeId: string, postId: string, text: string): Observable<Post> {
     return this.http.post<Post>(`/api/themes/${themeId}`, { postText });
   }
 }
+
+

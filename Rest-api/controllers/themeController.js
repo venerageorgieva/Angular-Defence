@@ -44,9 +44,17 @@ function subscribe(req, res, next) {
         .catch(next);
 }
 
+function deleteTheme(req, res, next) {
+    const { themeId } = req.params;
+    themeModel.findByIdAndDelete(themeId)
+        .then(() => res.status(200).json({ message: 'Темата е изтрита успешно' }))
+        .catch(next);
+}
+
 module.exports = {
     getThemes,
     createTheme,
     getTheme,
     subscribe,
+    deleteTheme,  
 }

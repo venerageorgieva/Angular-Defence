@@ -1,22 +1,24 @@
 <section>
   @if (isLoading) {
-  <app-loader />
+    <app-loader />
   }@else {
-  <div class="aside">
-    <h2 class="title">Нови постове:</h2>
-    <div>
-      @for (post of posts; track $index) {
-      <div class="aside-theme">
-        <a [routerLink]="['/themes', post.themeId._id]">
-          <h3>{{ post.themeId.themeName }}</h3>
-          <p>{{ post.userId.username }}</p>
-          <p>
-            <span>{{ post.created_at | elapsedTime }}</span>
-          </p>
-        </a>
+    <div class="aside">
+      <h2 class="title">Нови постове:</h2>
+      <div>
+        @for (post of posts; track $index) {
+          @if(post.themeId && post.userId){
+            <div class="aside-theme">
+              <a [routerLink]="['/themes', post.themeId._id]">
+                <h3>{{ post.themeId.themeName }}</h3>
+                <p>{{ post.userId.username }}</p>
+                <p>
+                  <span>{{ post.created_at | elapsedTime }}</span>
+                </p>
+              </a>
+            </div>
+          }
+        }
       </div>
-      }
     </div>
-  </div>
   }
 </section>

@@ -5,7 +5,7 @@
 Angular Project - Functional Guide
 <br>
 <br>1. Application Purpose
-The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
+<br>The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
 <br>
 <br>2. User Roles
 <br> Guest (Not Authenticated User)

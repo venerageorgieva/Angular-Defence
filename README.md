@@ -21,10 +21,13 @@ Angular Project - Functional Guide
 Authenticated User
 <br> Can create new advice posts
 <br> Can edit their own posts
-<br> Can delete their own posts (currently deletes only the advice, not the entire theme)
+<br> Can delete their own posts and themes 
 <br> Can like posts
 <br> Can search posts
 <br> Can edit and manage their profile information
+<br> Can see latest posts section on the home page
+<br>
+<img width="1366" height="470" alt="Screenshot 2026-04-20 at 19 50 53" src="https://github.com/user-attachments/assets/bbfdcce0-a4ad-49a7-a0d3-6c47bd5490e1" />
 <br>
 <img width="1440" height="812" alt="480049118-905f3f7c-ced4-4fa1-8e75-fe04a84463b6" src="https://github.com/user-attachments/assets/f338d376-e5ec-485f-9725-a43fa682cf32" />
 <br>

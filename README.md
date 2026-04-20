@@ -8,12 +8,12 @@ Angular Project - Functional Guide
 The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
 
 2. User Roles
-Guest (Not Authenticated User)
-Can view the home page
-Can browse all advice posts
-Can view details of specific posts
-Can search posts using the search bar
-Can register or login
+- Guest (Not Authenticated User)
+- Can view the home page
+- Can browse all advice posts
+- Can view details of specific posts
+- Can search posts using the search bar
+- Can register or login
 
 <img width="1440" height="814" alt="480048730-7b91dc42-5058-4f03-b470-b7ebb0cf155f" src="https://github.com/user-attachments/assets/4180aa4b-e5cb-46fa-9237-b72e4397a8c9" />
 

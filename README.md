@@ -4,10 +4,10 @@
 <br>
 Angular Project - Functional Guide
 <br>
-1. Application Purpose
+<br>1. Application Purpose
 The goal of the application is to provide a platform for plumbers and construction workers to share advice, solutions, and professional experiences. The website helps users solve work-related problems by allowing them to post and explore practical advice from others in the field.
 <br>
-2. User Roles
+<br>2. User Roles
 <br> Guest (Not Authenticated User)
 <br> Can view the home page
 <br> Can browse all advice posts
@@ -35,7 +35,7 @@ Authenticated User
 
 
 <br>
-4. Public Features
+<br>3. Public Features
 <br> Home page
 <br> Catalog page displaying all advice posts
 <br> Details page showing full information about a specific post
@@ -43,7 +43,7 @@ Authenticated User
 <br> Login page
 <br> Registration page
 <br>
-5. Main Application Flow
+<br>4. Main Application Flow
 <br> User opens the Home page
 <br> User navigates to the Catalog page to browse advice
 <br> User searches for specific advice using the search bar (optional)
@@ -54,7 +54,7 @@ Authenticated User
 <br> User can edit or delete their own posts
 <br> User can like other posts and update their profile
 <br>
-6. Data Structure
+<br>5. Data Structure
 <br> Advice Post Object
 <br>_id
 <br>likes
@@ -65,21 +65,21 @@ Authenticated User
 <br>updatedAt
 <br>__v
 <br>
-7. Project Architecture
+<br>6. Project Architecture
 <br> components/ – UI components (home, catalog, details, login, register, profile, etc.)
 <br> services/ – Handles API requests and business logic
 <br> models/ – Defines data structures (user, post, etc.)
 <br> guards/ – Route protection for authenticated users
 <br> shared/ – Reusable components and utilities
 <br>
-8. Technologies Used
+<br>7. Technologies Used
 <br> Angular
 <br> TypeScript
 <br> Node.js (REST API)
 <br> MongoDB
 <br> HTML / CSS
 <br>
-9. How to Run the Project
+<br>8. How to Run the Project
 <br> Clone the repository
 <br> Open a terminal and navigate to the project folder:
 <br> cd project
